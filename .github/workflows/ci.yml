@@ -1,0 +1,43 @@
+name: Build and Deploy app
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+concurrency:
+  group: production-deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Deploy with Self-Hosted Runner
+
+    runs-on: [self-hosted, docker-cicd]
+
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Verify Docker
+        run: |
+          docker --version
+          docker compose version
+
+      - name: Build and Deploy
+        run: |
+          docker compose -f docker/docker-compose.yml up -d --build --remove-orphans
+
+      - name: Show running containers
+        run: |
+          docker compose -f docker/docker-compose.yml ps
+
+      - name: Show logs if deployment fails
+        if: failure()
+        run: |
+          docker compose -f docker/docker-compose.yml logs
