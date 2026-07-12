@@ -23,6 +23,8 @@ jobs:
     steps:
       - name: Checkout source
         uses: actions/checkout@v4
+        with:
+          submodules: recursive
 
       - name: Verify Docker
         run: |
@@ -41,4 +43,3 @@ jobs:
         if: failure()
         run: |
           docker compose -f docker/docker-compose.yml logs
-
