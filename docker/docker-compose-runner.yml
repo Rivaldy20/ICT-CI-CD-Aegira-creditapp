@@ -6,7 +6,7 @@ services:
       REPO_URL: https://github.com/Rivaldy20/ICT-CI-CD-Aegira-creditapp.git
       RUNNER_NAME: fe-be-self-hosted-runner-cicd
       RUNNER_TOKEN: ASNQQLDSSQGS33SDXSDM3QLKKPA7I
-      LABELS: docker-local-cicd
+      LABELS: docker-cicd
     volumes:
       - //var/run/docker.sock:/var/run/docker.sock
       - ./runner-data:/runner/data
