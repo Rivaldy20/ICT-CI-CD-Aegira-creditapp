@@ -41,3 +41,4 @@ jobs:
         if: failure()
         run: |
           docker compose -f docker/docker-compose.yml logs
+

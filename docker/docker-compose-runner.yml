@@ -3,9 +3,9 @@ services:
     image: myoung34/github-runner:latest
     container_name: fe-be-github-runner
     environment:
-      REPO_URL: https://github.com/Rivaldy20/ICT-CI-CD-Aegira-creditapp.git
+      REPO_URL: https://github.com/Rivaldy20/ICT-CI-CD-Aegira-creditapp
       RUNNER_NAME: fe-be-self-hosted-runner-cicd
-      RUNNER_TOKEN: ASNQQLDSSQGS33SDXSDM3QLKKPA7I
+      RUNNER_TOKEN: ASNQQLEL65JS2LMFT3BCVTLKKPGZG
       LABELS: docker-cicd
     volumes:
       - //var/run/docker.sock:/var/run/docker.sock
